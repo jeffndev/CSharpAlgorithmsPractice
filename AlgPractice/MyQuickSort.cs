@@ -9,14 +9,7 @@ namespace AlgPractice
         public static void QuickSort(ref int[] arr, int N)
         {
             int piv = N > 0 ? arr[N - 1] : 0;
-            if(N == 2)
-            {
-                if(arr[0] > piv)
-                {
-                    arr[1] = arr[0];
-                    arr[0] = piv;
-                }
-            } else if(N > 2)
+            if(N > 1)
             {
                 int[] L = new int[N - 1];
                 int curPosL = 0;
@@ -32,8 +25,6 @@ namespace AlgPractice
                         L[curPosL++] = arr[i];
                     }
                 }
-                Array.Resize(ref G, curPosG);
-                Array.Resize(ref L, curPosL);
                 //recursion
                 QuickSort(ref G, curPosG);
                 QuickSort(ref L, curPosL);
@@ -57,7 +48,7 @@ namespace AlgPractice
             const int MAX_VALUE = 1000;
             const int MIN_VALUE = -MAX_VALUE;
             var rnd = new Random();
-            int N = rnd.Next(10, 100);
+            int N = rnd.Next(10, 10000);
             int[] refArray = new int[N];
             int[] testArray = new int[N];
             //create a random array of ints
